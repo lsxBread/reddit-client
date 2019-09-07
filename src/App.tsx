@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from 'components/Header/Header';
+import Navigation from 'components/Navigation/Navigation';
+import PostsContainer from 'components/Posts/PostsContainer';
 
 const AppWrapper = styled.div`
-  background-color: #2d2d2d;
+  width: 100%;
   height: 100vh;
+  background-color: #2d2d2d;
+  padding-left: 10px;
 `;
 
 const App: React.FC = () => {
   return (
-    <AppWrapper>
-    </AppWrapper>
+    <Router>
+      <AppWrapper>
+        <Header />
+        <Navigation />
+        <Route path={`/:subreddit`} component={PostsContainer} />
+      </AppWrapper>
+    </Router>
   );
 };
 
